@@ -12,7 +12,7 @@
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
-  :depends-on (alexandria cffi cl-autowrap cl-plus-c)
+  :depends-on (alexandria cl-autowrap/libffi cl-plus-c )
   :serial t
   :components ((:file "packages")
                (:file "libchipmunk")

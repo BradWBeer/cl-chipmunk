@@ -2,7 +2,7 @@
 
 
 (c-include "/usr/local/include/chipmunk/chipmunk.h"
- :spec-path '(bodge-ode spec)
+ :spec-path '(cl-chipmunk spec)
  :definition-package :%chipmunk
  ;;:exclude-sources (".*.h")
  :include-sources ("chipmunk/cpVect.h"
