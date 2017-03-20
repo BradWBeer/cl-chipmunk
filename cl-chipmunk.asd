@@ -16,7 +16,8 @@
   :serial t
   :components ((:file "packages")
                (:file "libchipmunk")
-               (:file "autowrap")))
+               (:file "autowrap")
+	       
                ;;(:file "ode")
-               ;; (:module spec
-               ;;          :components ((:static-file "lib.h")))))
+                (:module spec
+                         :components ((:static-file "chipmunk.h")))))
