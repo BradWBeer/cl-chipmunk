@@ -12,12 +12,12 @@
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
-  :depends-on (alexandria cl-autowrap/libffi cl-plus-c )
+  :depends-on (alexandria cl-autowrap/libffi cl-plus-c rtg-math)
   :serial t
   :components ((:file "packages")
                (:file "libchipmunk")
                (:file "autowrap")
-	       
-               ;;(:file "ode")
-                (:module spec
-                         :components ((:static-file "chipmunk.h")))))
+	       (:module spec
+			:components ((:static-file "chipmunk.h")))
+	       (:file "utils")
+	       (:file "space")))

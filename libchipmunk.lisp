@@ -1,10 +1,9 @@
 (cl:in-package :%chipmunk)
 
-
 (cffi:define-foreign-library libchipmunk
-  (:darwin (:or "libchipmunk.6.dylib" "libchipmunk.dylib"))
-  (:unix (:or "libchipmunk.so.0d3.0.0" ; debian/ubuntu convention for 0.14 version
-              "libchipmunk.so.0d3" "libchipmunk.so.0d3"))
+  (:darwin (:or "libchipmunk.7.dylib" "libchipmunk.dylib"))
+  (:unix (:or "libchipmunk.so.7" ; debian/ubuntu convention for 0.14 version
+              "libchipmunk.so.7.0.1" "libchipmunk.so"))
   (:windows "chipmunk.dll")
   (t (:default "chipmunk")))
 
