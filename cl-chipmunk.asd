@@ -7,10 +7,10 @@
 (in-package :cl-chipmunk.def)
 
 (defsystem cl-chipmunk
-  :description "Thin wrapper around Open Dynamics Engine for cl-bodge system"
+  :description "A thin wrapper around the chipmunk 2D physics library."
   :version "0.0.1"
-  :author "Pavel Korolev"
-  :mailto "dev@borodust.org"
+  :author "Brad (warweasle) Beer"
+  :mailto "warweasle@warweasle.com"
   :license "MIT"
   :depends-on (alexandria cl-autowrap/libffi cl-plus-c rtg-math)
   :serial t
