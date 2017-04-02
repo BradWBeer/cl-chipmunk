@@ -1,6 +1,5 @@
 (in-package :cl-chipmunk)
 
-
 (defun cp-space-new ()
   (with-float-traps-masked
     (%chip:cp-space-new)))

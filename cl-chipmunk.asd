@@ -1,6 +1,5 @@
 (in-package :cl-user)
 
-
 (defpackage :cl-chipmunk.def
   (:use :cl :asdf))
 
