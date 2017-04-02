@@ -20,4 +20,6 @@
 	       (:module spec
 			:components ((:static-file "chipmunk.h")))
 	       (:file "utils")
-	       (:file "space")))
+	       (:file "space")
+	       (:file "body")
+	       (:file "shape")))

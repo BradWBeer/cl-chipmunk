@@ -11,12 +11,14 @@
     `(,@masking
       ,@body)))
 
+(defmacro df (x)
+  `(coerce ,x 'double-float))
 
 (defmacro cp-vect->lisp (x)
   (let ((var (gensym)))
     `(let ((,var ,x))
-       (rtg-math:v! (plus-c:c-ref ,var %chip:cp-vect :x)
-		    (plus-c:c-ref ,var %chip:cp-vect :y)))))
+       (rtg-math:v! (%chip:cp-vect.x ,var)
+		    (%chip:cp-vect.y ,var)))))
 
 
 (defmacro lisp->cp-vect (c-vect vect)
@@ -24,8 +26,8 @@
 	(lvar (gensym)))
     `(let ((,cvar ,c-vect)
 	   (,lvar ,vect))
-       (setf (plus-c:c-ref ,cvar %chip:cp-vect :x) (coerce (elt ,lvar 0) 'double-float)
-	     (plus-c:c-ref ,cvar %chip:cp-vect :y) (coerce (elt ,lvar 1) 'double-float))
+       (setf (%chip:cp-vect.x ,cvar) (df (elt ,lvar 0))
+	     (%chip:cp-vect.y ,cvar) (df (elt ,lvar 1)))
        ,lvar)))
 	
 
@@ -33,6 +35,10 @@
   `(plus-c:c-with ((,name %chipmunk:cp-vect))
      ,@body))
 
+(defmacro with-set-vect ((name value) &body body)
+  `(with-vect (,name)
+     (lisp->cp-vect ,name ,value)
+     ,@body))
 
 (defmacro with-returned-vect ((name) &body body)
   `(plus-c:c-with ((,name %chipmunk:cp-vect))
