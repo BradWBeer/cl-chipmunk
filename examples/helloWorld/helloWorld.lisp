@@ -43,16 +43,19 @@
 
 (chip:cp-shape-set-friction ball-shape 0.7)
 
-(autowrap:defcallback callback :void ((space %CHIPMUNK:CP-SPACE) (a :pointer) (b :pointer))
-	   (format t "Callback!~%")
-	   (cffi:null-pointer))
+(autowrap:defcallback my-callback :void ((cspace :pointer) (a :pointer) (b :pointer))
+  ;; (c-let ((cspace
+  ;; 	   (:struct (%chipmunk:cp-space)) :from cspace))
+  
+    (format t "Callback!~%")
+    (cffi:null-pointer))
 
 (loop for i from 0 to 2 by dt
      do (progn 
 	  (format t "p=~A v=~A~%"
 		  (chip:cp-body-get-position ball-body)
 		  (chip:cp-body-get-velocity ball-body))
-	  (%chip:cp-space-add-post-step-callback cspace (autowrap:callback callback) (cffi:null-pointer) (cffi:null-pointer))
+	  (%chip:cp-space-add-post-step-callback cspace (autowrap:callback 'my-callback) (cffi:null-pointer) (cffi:null-pointer))
 	  (chip:cp-space-step cspace dt)))
 
 (chip:cp-shape-free ball-shape)
